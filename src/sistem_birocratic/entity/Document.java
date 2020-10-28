@@ -7,22 +7,15 @@ public class Document {
     private String documentName;
     private List<Document> intermediateDocumentList;
     private boolean documentState = false; // 1 => document procurat, 0 => document neprocurat
-    private boolean documentType = false; // 1 => exista subdocumente, 0 => nu exista subdocumente
+    private boolean documentType = true; // 1 => exista subdocumente, 0 => nu exista subdocumente
 
     public Document(String documentName, List<Document> intermediateDocumentList){
         this.documentName = documentName;
-        if(intermediateDocumentList == null)
-            this. intermediateDocumentList = new ArrayList<Document>();
+        if(intermediateDocumentList == null) {
+            this.intermediateDocumentList = new ArrayList<Document>();
+            this.documentType = false;
+        }
         else this.intermediateDocumentList = intermediateDocumentList;
-    }
-
-    public Document(String documentName, List<Document> intermediateDocumentList, boolean documentType){
-        this.documentName = documentName;
-        if(intermediateDocumentList == null)
-            this. intermediateDocumentList = new ArrayList<Document>();
-        else this.intermediateDocumentList = intermediateDocumentList;
-        this.documentState = false;
-        this.documentType = documentType;
     }
 
     //getters
